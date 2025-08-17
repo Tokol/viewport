@@ -1,0 +1,72 @@
+:root{
+    --frt-bar-bg: rgba(17,17,17,.92);
+    --frt-fg: #fff;
+    --frt-border: rgba(255,255,255,.2);
+    --frt-muted: rgba(255,255,255,.7);
+    --frt-btn-size: 32px;
+    --frt-icon: 18px;
+}
+
+/* Toolbar */
+#frt-overlay{
+    position: fixed;
+    left: 0; right: 0; top: 0;
+    display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+    padding: 8px 10px; box-sizing: border-box;
+    background: var(--frt-bar-bg); color: var(--frt-fg);
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    z-index: 2147483647;
+    -webkit-user-select: none; user-select: none;
+    box-shadow: 0 6px 16px rgba(0,0,0,.18);
+}
+
+#frt-overlay .title{
+    font-size: 12px; opacity: .9; flex: 1 1 180px; min-width: 0;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+#frt-overlay .controls{
+    display: flex; gap: 8px; flex: 0 0 auto; align-items: center;
+}
+
+#frt-overlay select{
+    font-size: 12px; padding: 6px 8px;
+    border-radius: 8px; border: 1px solid var(--frt-border);
+    background: rgba(255,255,255,.10); color: var(--frt-fg);
+    cursor: pointer; outline: none;
+}
+#frt-overlay select:focus{ border-color: rgba(255,255,255,.35); }
+
+/* Icon buttons */
+.frt-btn{
+    display: inline-flex; align-items: center; justify-content: center;
+    width: var(--frt-btn-size); height: var(--frt-btn-size);
+    border-radius: 8px;
+    border: 1px solid var(--frt-border);
+    background: rgba(255,255,255,.10);
+    color: var(--frt-fg); cursor: pointer; outline: none;
+}
+.frt-btn:hover{ background: rgba(255,255,255,.18); }
+.frt-btn svg{ width: var(--frt-icon); height: var(--frt-icon); }
+
+/* Hide overlay for clean screenshots (no layout shift) */
+#frt-overlay.frt-hidden{ display: none; }
+
+/* If we invert page for dark mode, cancel it on the toolbar itself */
+html[data-frt-filter="dark"] #frt-overlay.frt-invert-cancel{
+    filter: invert(1) hue-rotate(180deg) !important;
+}
+
+/* Counter-invert media so photos/videos look natural in dark-filter mode */
+html[data-frt-filter="dark"] img,
+html[data-frt-filter="dark"] video,
+html[data-frt-filter="dark"] picture,
+html[data-frt-filter="dark"] canvas,
+html[data-frt-filter="dark"] svg:not(#frt-overlay svg){
+    filter: invert(1) hue-rotate(180deg);
+}
+
+/* Small widths: add a bit of vertical breathing room */
+@media (max-width: 560px){
+    #frt-overlay{ row-gap: 6px; }
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Viewport Lab</title>
+    <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+<div class="container">
+    <h2>Viewport Lab</h2>
+
+    <div id="currentUrl" class="current-url">Detecting current tab…</div>
+
+    <div class="multibar">
+        <label class="check">
+            <input type="checkbox" id="multiToggle" />
+            Multi-select
+        </label>
+        <button id="openSelectedBtn" disabled>Open Selected (0)</button>
+    </div>
+
+    <!-- Stage 2: Add Device form -->
+    <!-- Add Device (collapsible like other sections) -->
+    <div class="section" id="addSection">
+        <div class="section-header" id="addHeader">
+            <div class="section-title">Add Device</div>
+            <div class="section-toggle" id="addToggle">▸</div>
+        </div>
+
+        <div class="section-body" id="addBody">
+            <fieldset class="add-device">
+                <legend>Add Device</legend>
+                <input id="devName" type="text" placeholder="Name e.g. My Phone" />
+                <div class="row">
+                    <input id="devWidth" type="number" min="1" placeholder="Width" />
+                    <input id="devHeight" type="number" min="1" placeholder="Height" />
+                </div>
+                <button id="addDeviceBtn">Add & Save</button>
+                <p class="subhint">Saved devices appear in “Your Devices”.</p>
+            </fieldset>
+        </div>
+    </div>
+
+
+
+
+    <!-- Catalog -->
+
+
+
+    <div id="catalog"></div>
+
+    <div id="status" class="status"></div>
+
+    <p class="hint">
+        Tip: You can add any width × height you like. We’ll keep them for next time.
+    </p>
+</div>
+
+<script src="popup.js"></script>
+</body>
+</html>

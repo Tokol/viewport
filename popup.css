@@ -1,0 +1,135 @@
+:root {
+    --bg: #f7f7f8;
+    --card: #ffffff;
+    --text: #111827;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --primary: #2563eb;
+}
+
+* { box-sizing: border-box; }
+
+body { margin: 0; background: var(--bg); color: var(--text);
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; }
+
+.container { width: 380px; padding: 12px; }
+h2 { margin: 0 0 8px; font-size: 16px; }
+
+.current-url {
+    font-size: 12px; color: var(--muted); word-break: break-all;
+    border: 1px solid var(--border); border-radius: 8px; background: var(--card);
+    padding: 8px 10px; margin-bottom: 10px;
+}
+
+.status { margin-top: 8px; font-size: 12px; color: var(--muted); }
+.hint { margin-top: 8px; font-size: 11px; color: var(--muted); }
+
+/* Stage 2: Add Device */
+.add-device {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--card);
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.add-device legend { font-size: 12px; color: var(--muted); padding: 0 6px; }
+.add-device input {
+    width: 100%; padding: 8px 10px;
+    border: 1px solid var(--border); border-radius: 8px; background: var(--card);
+    margin-bottom: 6px;
+}
+.add-device .row { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.add-device button {
+    width: 100%; padding: 8px 10px; cursor: pointer;
+    border: 1px solid var(--primary); background: var(--primary); color: #fff; border-radius: 8px;
+}
+.subhint { margin: 6px 0 0; font-size: 11px; color: var(--muted); }
+
+/* Catalog */
+.section {
+    border: 1px solid var(--border); border-radius: 10px; background: var(--card);
+    margin-bottom: 10px; overflow: hidden;
+}
+.section-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 8px 10px; border-bottom: 1px solid var(--border); cursor: pointer;
+}
+.section-title, .section-toggle { font-size: 12px; color: var(--muted); }
+.section-body { display: none; padding: 8px; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.tile {
+    border: 1px solid var(--border); border-radius: 10px; padding: 8px; background: #fafafa;
+    cursor: pointer; transition: border-color .15s ease, background .15s ease;
+}
+.tile:hover { background: #f3f4f6; }
+.tile.active { border-color: var(--primary); background: #eef2ff; }
+.tile .name { font-size: 12px; margin-bottom: 2px; }
+.tile .dim { font-size: 11px; color: var(--muted); }
+
+.tile { position: relative; }
+
+.tile .delete {
+    position: absolute; top: 6px; right: 6px;
+    border: 1px solid var(--border); background: #fff; color: #444;
+    border-radius: 8px; font-size: 11px; padding: 4px 6px; cursor: pointer;
+}
+.tile .delete:hover { background: #f3f4f6; }
+
+.multibar {
+    display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    margin: 8px 0 10px;
+}
+.multibar .check { font-size: 12px; color: var(--muted); display:flex; align-items:center; gap:6px; }
+#openSelectedBtn {
+    padding: 8px 10px; border-radius: 8px; cursor: pointer;
+    border: 1px solid var(--primary); background: var(--primary); color: #fff;
+}
+#openSelectedBtn:disabled { opacity: .5; cursor: not-allowed; }
+
+/* selected state in multi mode */
+.tile.sel {
+    border-color: var(--primary);
+    background: #eef2ff;
+    position: relative;
+}
+.tile.sel::after {
+    content: "✓";
+    position: absolute; top: 6px; left: 6px;
+    font-size: 12px; color: var(--primary);
+    font-weight: 700;
+}
+
+.controls {
+    display: flex; gap: 8px; align-items: center;
+    margin: 8px 0 10px;
+}
+.controls .multi {
+    font-size: 12px; color: var(--muted);
+    display: flex; gap: 6px; align-items: center;
+}
+#openSelectedBtn {
+    margin-left: auto; padding: 8px 10px; cursor: pointer;
+    border: 1px solid var(--primary); background: var(--primary); color: #fff; border-radius: 8px;
+}
+#openSelectedBtn:disabled { opacity: .5; cursor: not-allowed; }
+
+/* selection highlight for multi-select */
+
+.tile.sel {
+    outline: 2px solid var(--primary);
+    background: #eef2ff;
+}
+
+
+/* delete button on custom tiles */
+.tile { position: relative; }
+.tile .delete{
+    position:absolute; right:6px; top:6px;
+    width:28px; height:28px;
+    display:flex; align-items:center; justify-content:center;
+    border-radius:6px; border:1px solid var(--border);
+    background:#fff; color:#c1121f;      /* icon uses currentColor */
+    cursor:pointer;
+}
+.tile .delete:hover{ background:#fee; border-color:#fca5a5; }
+
